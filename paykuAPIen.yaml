@@ -414,6 +414,9 @@ tags:
   - name: Banks
     description: |
       Allows you to view the list of partner banks.
+  - name: Methods of payment
+    description: |
+      Allows you to view the list of payment methods used by payku.
 
 x-tagGroups:
   - name: ''
@@ -431,6 +434,7 @@ x-tagGroups:
   - name: Tools
     tags:
       - Banks
+      - Methods of payment
   - name: Info
     tags:
       - payku.cl
@@ -454,7 +458,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error400get"
+                $ref: "#/components/schemas/ErrorBanks400get"
 
       x-codeSamples:
         - lang: "CURL"
@@ -504,7 +508,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Error400get"
+                $ref: "#/components/schemas/ErrorBanks400get"
 
       x-codeSamples:
         - lang: "CURL"
@@ -524,6 +528,102 @@ paths:
           source: |
             const request = async () => {
               const response = await fetch('https://BASE_URL/api/banks?currency=clp', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+              });
+              const result = await response.json();
+              console.log(result)
+            }
+            request();
+
+  /api/paymentmethods:
+    get:
+      tags:
+        - Methods of payment
+      summary: "Get list of payment methods on payku"
+      description: |
+        This method allows you to obtain a list of payment methods on payku.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MethodsPaymentResponse"
+        "400":
+          description: Request failed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBanks400get"
+      x-codeSamples:
+        - lang: "CURL"
+          source: |
+            curl -X GET \
+            https://BASE-URL/api/paymentmethods  \
+            -H 'Accept: application/json, text/plain, */*' \
+            -H 'Content-Type: application/json,application/json' \
+            -H 'Host: BASE-URL' \
+        - lang: "PHP"
+          source: |
+            $client = new \GuzzleHttp\Client();
+              $body = $client->request('GET', 'https://BASE_URL/api/paymentmethods', [
+              ])->getBody();
+            $response = json_decode($body);
+        - lang: "JS"
+          source: |
+            const request = async () => {
+              const response = await fetch('https://BASE_URL/api/paymentmethods', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+              });
+              const result = await response.json();
+              console.log(result)
+            }
+
+            request();
+
+  /api/paymentmethods?currency=clp:
+    get:
+      tags:
+        - Methods of payment
+      summary: "Get list of payment methods by currency type"
+      description: |
+        This method allows you to get a list of payment methods in payku.
+        To filter by currency, you have to add the query params currency with the currency value.
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MethodsPaymentCurrencyResponse"
+        "400":
+          description: Request failed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBanks400get"
+      x-codeSamples:
+        - lang: "CURL"
+          source: |
+            curl -X GET \
+            https://BASE-URL/api/paymentmethods?currency=clp  \
+            -H 'Accept: application/json, text/plain, */*' \
+            -H 'Content-Type: application/json,application/json' \
+            -H 'Host: BASE-URL' \
+        - lang: "PHP"
+          source: |
+            $client = new \GuzzleHttp\Client();
+              $body = $client->request('GET', 'https://BASE_URL/api/paymentmethods?currency=clp', [
+              ])->getBody();
+            $response = json_decode($body);
+        - lang: "JS"
+          source: |
+            const request = async () => {
+              const response = await fetch('https://BASE_URL/api/paymentmethods?currency=clp', {
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json'
@@ -5154,6 +5254,98 @@ components:
                 currency: "CLP"
               }
 
+
+    MethodsPaymentResponse:
+      description: "Return data from the creation of the payment method list"
+      type: object
+      properties:
+        status:
+          type: string
+          description: |
+            Status of the endpoint. The possible statuses that can be obtained are the following:
+            - success
+          example: "success"
+        payment_methods:
+          type: array
+          items:
+            description: "Return data of the list of payment methods"
+            type: object
+            properties:
+              description:
+                type: string
+                description: |
+                  Brief description of payment method.
+                example: Use your bank, simplify your transfers.
+              payment:
+                type: number
+                description: |
+                  Code belonging to the payment method.
+                example: 17
+              name:
+                type: string
+                description: Name of payment method.
+                example: Vepuy
+              currency:
+                type: string
+                description: Currency
+                Example: CLP
+          example:
+            - {
+                currency: "VES",
+                payment: 17,
+                name: "Vepuy",
+                description: "Utiliza tu banco, simplifica tus transferencias."
+              }
+            - {
+                currency: "CLP",
+                payment: 1,
+                name: "Webpay",
+                description: "Visa, Mastercard, Magna, American, Diners y Redcompra."
+              }
+
+    MethodsPaymentCurrencyResponse:
+      description: "Return data from the creation of the payment method list"
+      type: object
+      properties:
+        status:
+          type: string
+          description: |
+            Status of the endpoint. The possible statuses that can be obtained are the following:
+            - success
+          example: "success"
+        payment_methods:
+          type: array
+          items:
+            description: "Payment method list status return data"
+            type: object
+            properties:
+              code:
+                type: string
+                description: |
+                  Code of the bank to which the bank account belongs.
+                example: Banco de Chile
+              name:
+                type: string
+                description: Name of bank.
+                example: Banco de Chile
+              currency:
+                type: string
+                description: Currency
+                Example: CLP
+          example:
+            - {
+                currency: "CLP",
+                payment: 1,
+                name: "Webpay",
+                description: "Visa, Mastercard, Magna, American, Diners y Redcompra."
+              }
+            - {
+                currency: "CLP",
+                payment: 9,
+                name: "MACH",
+                description: "Paga en comercios online internacionales y nacionales"
+              }
+
     AdminClientResponse:
       description: "Return data from a client insert"
       type: object
@@ -7561,6 +7753,22 @@ components:
           type: string
           description: Error message.
           example: subject:invalid,amount:is empty,email:is empty,order:invalid
+
+    ErrorBanks400get:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Request status.
+          example: failed
+        type:
+          type: string
+          description: Type of error.
+          example: Unprocessable Entity
+        message_error:
+          type: string
+          description: Error message
+          example: ""
 
     Error401:
       type: object
