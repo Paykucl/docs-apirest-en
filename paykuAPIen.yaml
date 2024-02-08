@@ -5002,9 +5002,9 @@ paths:
             -d {
                 "email": "joedoe@gmail.com",
                 "merchant": [
-                  ["81b6179e4feeef2b50af71d660f830de", "30000", "item1"],
-                  ["bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b","25000","item2"],
-                  ["PUBLIC-TOKEN","15000","item3"]
+                  ["81b6179e4feeef2b50af71d660f830de", "30000", "item1", null, "4545"],
+                  ["bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b","25000","item2", null, "4546"],
+                  ["PUBLIC-TOKEN","15000","item3", null, "4547"]
                 ],
                 "order": 123,
                 "urlreturn": "https://youwebsite.cl/urlreturn",
@@ -5017,9 +5017,9 @@ paths:
                 'json' => [
                   'email'         => 'joedoe@gmail.com',
                   'merchant'      => [
-                    ['81b6179e4feeef2b50af71d660f830de', '30000', 'item1'],
-                    ['bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b','25000','item2'],
-                    ['PUBLIC-TOKEN','15000','item3']
+                    ['81b6179e4feeef2b50af71d660f830de', '30000', 'item1', null, '4545'],
+                    ['bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b','25000','item2', null, '4546'],
+                    ['PUBLIC-TOKEN','15000','item3', null, '4547']
                   ],
                   'order'         => 123,
                   'urlreturn'     => 'https://youwebsite.cl/urlreturn',
@@ -5049,9 +5049,9 @@ paths:
             let data = {
               email: "joedoe@gmail.com",
               merchant: [
-                ["81b6179e4feeef2b50af71d660f830de", "30000", "item1"],
-                ["bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b","25000","item2"],
-                ["PUBLIC-TOKEN","15000","item3"]
+                ["81b6179e4feeef2b50af71d660f830de", "30000", "item1", null, "4545"],
+                ["bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b","25000","item2", null, "4546"],
+                ["PUBLIC-TOKEN","15000","item3", null, "4547"]
               ],
               order: 123,
               urlreturn: "https://youwebsite.cl/urlreturn",
@@ -5071,11 +5071,21 @@ paths:
                   example: joedoe@gmail.com
                 merchant:
                   type: array of arrays
-                  description: Array containing the customers, each customer is an array containing their public token or marketplace affiliate id, transaction value, and description
+                  description: Array containing the clients, each client is an array containing its public token or marketplace affiliation id, transaction value, description, id of the specific event which if not owned must pass null and individual order number.
                   example:
-                    - [81b6179e4feeef2b50af71d660f830de,30000,item1]
-                    - [bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b,25000,item2]
-                    - [PUBLIC-TOKEN,15000,item3]
+                    - [81b6179e4feeef2b50af71d660f830de, 30000, item1,
+                        null,
+                        "4545"]
+                    - [
+                        bcf6c06c523d9394be41bc0174c43d1476f274abb342955aac93cc8014737b3b,
+                        25000,
+                        "item2",
+                        null,
+                        "4546"
+                      ]
+                    - [81b6179e4fffff2b50af71d66f7830de, 15000, item3,
+                        null,
+                        "4547"]
                 order:
                   description: Trade order, this must be unique.
                   type: integer
@@ -7489,10 +7499,36 @@ components:
             - refunded partial
             - refunded
           example: "success"
-        id:
-          type: string
-          description: Transaction identifier created by payku.
-          example: "malld200058ab44739ddee2adcd2f5"
+        individual_orders:
+          type: array
+          description: Arrangement containing beneficiary information.
+          items:
+            type: object
+            properties:
+              merchant:
+                type: string
+                description: Beneficiary's name.
+              amount:
+                type: string
+                description: Amount of the product or service.
+              detail:
+                type: string
+                description: Description of the transaction.
+              event:
+                type: string
+                description: ID of the event, if it does not have event it must pass null.
+              identificador:
+                type: string
+                description: Transaction identifier.
+                example: "9917068816213146"
+              individual_order:
+                type: string
+                description: Individual transaction identifier.
+                example: "4546"
+          example:
+            - { merchant: 81b6179e4feeef2b50af71d660f830de, amount: 30000, subject: item1, event: null, identificador: "9917068816213146", individual_order: "9654" }
+            - { merchant: 81b6179e4feeef2b50af71d66f7830de, amount: 25000, subject: item2, event: null, identificador: "9917068816213146", individual_order: "9654" }
+            - { merchant: 81b6179e4fffff2b50af71d66f7830de, amount: 15000, subject: item3, event: null, identificador: "9917068816213146", individual_order: "9654" }
         url:
           type: string
           description: URL has redirect user.
