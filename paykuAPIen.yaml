@@ -3766,6 +3766,7 @@ paths:
                     - 12 Chek
                     - 15 ServiFacil
                     - 17 Vepuy (moneda VES)
+                    - 19 Fintoc
                     - 99 All
                   type: integer
                   example: 1
@@ -3820,9 +3821,14 @@ paths:
                   format: url
                   example: https://youwebsite.com/urlnotify?orderClient=123
                 additional_parameters:
-                  description: Additional client parameters (Optional).
+                  description: |
+                    Additional client parameters (Optional).
                   type: object
                   properties:
+                    # gateway:
+                    #   description: Bank code to be used in VES
+                    #   type: string
+                    #   example: "UNIOVECAP2C"
                     parameters1:
                       description: Name of the parameter given by the user payku
                       type: string
