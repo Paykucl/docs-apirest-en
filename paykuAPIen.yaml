@@ -2424,6 +2424,90 @@ paths:
               required:
                 - suscription
 
+  /api/suscriptionsdeletecards/:
+      post:
+        tags:
+          - Consumption Subscription
+        summary: Remove card
+        description: |
+          This method allows you to delete a card associated with the subscription.
+        responses:
+          "200":
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/CardDeleteSuscriptionResponse"
+          "400":
+            description: Request failed.
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error400CardDelete"
+          "401":
+            description: Incorrect public token.
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error401"
+        x-codeSamples:
+          - lang: "CURL"
+            source: |
+              curl -X POST \
+              https://BASE_URL/api/suinscriptionscards \
+              -H 'Accept: application/json, text/plain, */*' \
+              -H 'Sign: SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN'  \
+              -H 'Authorization: Bearer PUBLIC_TOKEN'  \
+              -H 'Content-Type: application/json,application/json' \
+              -H 'Host: BASE_URL' \
+              -d {
+                  "card": "surec804a8ed60c0a8cb8839"
+                }'
+          - lang: "PHP"
+            source: |
+              $client = new \GuzzleHttp\Client();
+                $body = $client->request('POST', 'https://BASE_URL/api/suinscriptionscards', [
+                  'json' => [
+                    'card' => surec804a8ed60c0a8cb8839,
+                    ],
+                    'headers' => [
+                      'Sign' => 'SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN',
+                      'Authorization' => 'Bearer PUBLIC_TOKEN'              ]
+                    ])->getBody();
+                  $response = json_decode($body);
+          - lang: "JS"
+            source: |
+              const request = async (data) => {
+                const response = await fetch('https://BASE_URL/api/suinscriptionscards', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Sign': 'SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN',
+                    'Authorization': 'Bearer PUBLIC_TOKEN'
+                  },
+                  body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                console.log(result)
+              }
+
+              let data = {
+                card: "surec804a8ed60c0a8cb8839"
+              };
+
+              request(data);
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suscription:
+                    description: ID of the associated card.
+                    type: string
+                    example: surec804a8ed60c0a8cb8839
+                required:
+                  - suscription
+
   /api/suclient:
     post:
       tags:
@@ -3373,7 +3457,7 @@ paths:
     post:
       tags:
         - Subscription
-      summary: Affiliate card to subscription
+      summary: Afiliate card to subscription
       description: |
         This method allows the insertion of the data of a subscription card.
 
@@ -3408,7 +3492,7 @@ paths:
             https://BASE_URL/api/suinscriptionscards \
             -H 'Accept: application/json, text/plain, */*' \
             -H 'Sign: SIGN'  \
-            -H 'Authorization: Bearer TOKEN_PUBLICO'  \
+            -H 'Authorization: Bearer PUBLIC_TOKEN'  \
             -H 'Content-Type: application/json,application/json' \
             -H 'Host: BASE_URL' \
             -d {
@@ -3459,6 +3543,90 @@ paths:
                   example: sucaab7865dceaff49d8b3
               required:
                 - suscription
+
+  /api/suscriptionsdeletecards:
+      post:
+        tags:
+          - Subscription
+        summary: Remove card
+        description: |
+          This method allows you to delete a card associated with the subscription.
+        responses:
+          "200":
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/CardDeleteSuscriptionResponse"
+          "400":
+            description: Request failed.
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error400CardDelete"
+          "401":
+            description: Incorrect public token.
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error401"
+        x-codeSamples:
+          - lang: "CURL"
+            source: |
+              curl -X POST \
+              https://BASE_URL/api/suinscriptionscards \
+              -H 'Accept: application/json, text/plain, */*' \
+              -H 'Sign: SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN'  \
+              -H 'Authorization: Bearer PUBLIC_TOKEN'  \
+              -H 'Content-Type: application/json,application/json' \
+              -H 'Host: BASE_URL' \
+              -d {
+                  "card": "surec804a8ed60c0a8cb8839"
+                }'
+          - lang: "PHP"
+            source: |
+              $client = new \GuzzleHttp\Client();
+                $body = $client->request('POST', 'https://BASE_URL/api/suinscriptionscards', [
+                  'json' => [
+                    'card' => surec804a8ed60c0a8cb8839,
+                    ],
+                    'headers' => [
+                      'Sign' => 'SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN',
+                      'Authorization' => 'Bearer PUBLIC_TOKEN'              ]
+                    ])->getBody();
+                  $response = json_decode($body);
+          - lang: "JS"
+            source: |
+              const request = async (data) => {
+                const response = await fetch('https://BASE_URL/api/suinscriptionscards', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Sign': 'SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN',
+                    'Authorization': 'Bearer PUBLIC_TOKEN'
+                  },
+                  body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                console.log(result)
+              }
+
+              let data = {
+                card: "surec804a8ed60c0a8cb8839"
+              };
+
+              request(data);
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  suscription:
+                    description: ID of the associated card.
+                    type: string
+                    example: surec804a8ed60c0a8cb8839
+                required:
+                  - suscription
 
   /api/suplan/{idPlan}:
     get:
@@ -6332,6 +6500,19 @@ components:
           type: string
           example: https://BASE_URL/gateway/registrosuscripcion?plan=true&token=246&validacion=d6b32
 
+    CardDeleteSuscriptionResponse:
+      description: "Datos de retorno de la tarjeta eliminada"
+      type: object
+      properties:
+        status:
+          description: Status.
+          type: string
+          example: Delete
+        card:
+          description: Identificador único de La tarjeta asociada a la suscripción.
+          type: string
+          example: surec804a8ed60c0a8cb8839
+
     SuscriptionIdResponse:
       description: "Return data from the query of a subscription"
       type: object
@@ -7851,6 +8032,22 @@ components:
           type: string
           description: Error message.
           example: subject:invalid,amount:is empty,email:is empty,order:invalid
+
+    Error400CardDelete:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Request status.
+          example: failed
+        type:
+          type: string
+          description: Type of error.
+          example: card
+        message_error:
+          type: string
+          description: Mensaje de error
+          example: is not valid
 
     Error400Event:
       type: object
