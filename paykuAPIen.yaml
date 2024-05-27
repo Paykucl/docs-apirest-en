@@ -83,7 +83,7 @@ info:
     ### PHP Example
     API Endpoint:
     ```php
-    $request_path = urlencode('/api/suclient');
+    $request_path = urlencode('/api/suclient/');
     ```
     Sorting the parameters:
     ```php
@@ -2267,7 +2267,7 @@ paths:
               $body = $client->request('POST', 'https://BASE_URL/api/sususcription, [
                 'json' => [
                   'plan' => 'pl9697fb170834ad42dd00',
-                  'client' => ' cl9b1e1dd988694f30fa30',
+                  'client' => 'cl9b1e1dd988694f30fa30',
                   ],
                   'headers' => [
                     'Sign' => 'SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN',
@@ -3082,7 +3082,7 @@ paths:
               $body = $client->request('POST', 'https://BASE_URL/api/sususcription, [
                 'json' => [
                   'plan' => 'pl9697fb170834ad42dd00',
-                  'client' => ' cl9b1e1dd988694f30fa30',
+                  'client' => 'cl9b1e1dd988694f30fa30',
                   ],
                   'headers' => [
                     'Sign' => 'SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN',
@@ -3261,7 +3261,7 @@ paths:
                   'suscription' => sucaab7865dceaff49d8b3,
                   'order' => '001',
                   'amount' => '10000',
-                  'description' => ' descripcion'
+                  'description' => 'descripcion'
                   ],
                   'headers' => [
                     'Sign' => 'SHA256-REQUEST-PATH-VALUE-PRIVATE-TOKEN',
