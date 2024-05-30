@@ -66,7 +66,7 @@ info:
       - Authorization: Bearer **TOKEN-PÚBLICO**
 
     # Signature
-    In the case of the subscription and Mall API, an additional layer of security was added
+    In the case of the subscription, nullification and Mall API, an additional layer of security was added
     through of a signature that is sent in the request header, to obtain said signature
     is necessary the following:
 
@@ -1791,6 +1791,7 @@ paths:
             https://BASE-URL/api/nullification \
             -H 'Accept: application/json, text/plain, */*' \
             -H 'Authorization: Bearer PUBLIC-TOKEN' \
+            -H 'Sign: f96ddc14a73a4dd6e009db2514108a3f44832795cd5ac50e6a80fd0b0ae92112' \
             -H 'Content-Type: application/json,application/json' \
             -H 'Host: BASE-URL' \
             -d '{
@@ -1808,6 +1809,7 @@ paths:
                   'subject' => "transaction annulment"
                   ],
                 'headers' => [
+                  'Sign' => 'f96ddc14a73a4dd6e009db2514108a3f44832795cd5ac50e6a80fd0b0ae92112',
                   'Authorization' => 'Bearer PUBLIC-TOKEN'
                 ]
               ])->getBody();
@@ -1819,6 +1821,7 @@ paths:
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
+                  'Sign': 'f96ddc14a73a4dd6e009db2514108a3f44832795cd5ac50e6a80fd0b0ae92112',
                   'Authorization': 'Bearer PUBLIC-TOKEN'
                 },
                 body: JSON.stringify(data)
@@ -1828,7 +1831,7 @@ paths:
             }
 
             let data = {
-              'transactions': 'trxpr2a45s1dytg1',
+              'id': 'trxpr2a45s1dytg1',
               'amount': 25000,
               'subject': 'transaction annulment'
             };
