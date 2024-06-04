@@ -861,7 +861,7 @@ paths:
               type: object
               properties:
                 email:
-                  pattern: "  maximum 50 characters"
+                  pattern: " maximum 50 characters"
                   description: Client email
                   type: string
                   format: email
@@ -872,22 +872,22 @@ paths:
                   type: string
                   example: "923122312"
                 subject:
-                  pattern: "  maximum 200 characters"
+                  pattern: " maximum 200 characters"
                   description: Order Description
                   type: string
                   example: test subject
                 currency:
-                  pattern: "  maximum 6 characters"
+                  pattern: " maximum 6 characters"
                   description: Currency description (ISO format)
                   type: string
                   example: "CLP"
                 order:
-                  pattern: "  maximum 80 characters"
+                  pattern: " maximum 80 characters"
                   description: E-commerce order
                   type: string
                   example: "98745"
                 amount:
-                  pattern: "  maximum 14 digits"
+                  pattern: " maximum 14 digits"
                   description: Order amount
                   type: integer
                   example: 25000
@@ -917,14 +917,14 @@ paths:
                   type: string
                   example: "1"
                 accountbank_num:
-                  pattern: "  maximum 200 characters"
+                  pattern: " maximum 200 characters"
                   description: |
                     Customer account number
                       - **For the bank "banco estado" (sbif 0012) the maximum number of characters is 12 This bank is the most common in Chile, it is good to add the validation of maximum digits of 12. This prevents users from entering their debit card number For the rest of the banks, it can have more than 12 characters since the banks are not standardized in their account number format.**
                   type: string
                   example: "12312312312"
                 url_notify:
-                  pattern: "  maximum 600 characters"
+                  pattern: " maximum 600 characters"
                   description: |
                     url where the result of the payment will be notified.
                     - Note: After making the payment to third parties, payku will automatically respond to the endpoint entered in urlnotify the result of the operation.
@@ -957,7 +957,7 @@ paths:
                   type: string
                   example: "https://youwebsite.com/urlnotify?orderClient=98745"
                 additional_parameters:
-                  pattern: "  maximum 4000 characters"
+                  pattern: " maximum 4000 characters"
                   description: Client additional parameters
                   type: object
                   properties:
@@ -1112,41 +1112,50 @@ paths:
               type: object
               properties:
                 email:
+                  pattern: " maximum 50 characters"
                   description: Client email
                   type: string
                   format: email
                   example: "johndoe@example.com"
                 phone:
+                  pattern: " maximum 20 characters"
                   description: Client phone
                   type: string
                   example: "04149876543"
                 subject:
+                  pattern: " maximum 200 characters"
                   description: Order Description
                   type: string
                   example: test subject
                 currency:
+                  pattern: " maximum 6 characters"
                   description: Currency description (ISO format)
                   type: string
                   example: "VES"
                 order:
+                  pattern: " maximum 50 characters"
                   description: E-commerce order
                   type: string
                   example: "98745"
                 amount:
+                  pattern: " maximum 14 digits"
                   description: Order amount
                   type: integer
                   example: 600
                 accountbank_name:
+                  pattern: " maximum 180 characters"
                   description: Name of the destination account holder
                   type: string
                   example: John Doe
                 accountbank_rut:
+                  pattern: " maximum 15 characters"
                   description: |
                     Identity card of the destination account holder in Venezuela
                     Format: (V/E/J) Vxxxxxxx
                   type: string
                   example: "V23654789"
                 accountbank_sbif:
+                  pattern: " maximum 4 characters"
                   description: |
                     Code of the bank to which the bank account belongs in Venezuela.
                       - 0102 Banco De Venezuela
@@ -1169,11 +1178,13 @@ paths:
                   type: string
                   example: "0102"
                 accountbank_num:
+                  pattern: " maximum 200 characters"
                   description: |
                     Customer's account number in Venezuela Format: (0412 / 0414 / 0424 / 0426 / 0416) 9876543
                   type: string
                   example: "04149876543"
                 url_notify:
+                  pattern: " maximum 600 characters"
                   description: |
                     url where the result of the payment will be notified.
                     - Note: After making the payment to third parties, payku will automatically respond to the endpoint entered in urlnotify the result of the operation.
@@ -1208,6 +1219,7 @@ paths:
                   type: string
                   example: "https://youwebsite.com/urlnotify?orderClient=98745"
                 additional_parameters:
+                  pattern: " maximum 4000 characters"
                   description: Client additional parameters
                   type: object
                   properties:
@@ -1323,18 +1335,22 @@ paths:
               type: object
               properties:
                 subject:
+                  pattern: " maximum 200 characters"
                   description: Order Description
                   type: string
                   example: test subject
                 currency:
+                  pattern: " maximum 6 characters"
                   description: Currency description (ISO format)
                   type: string
                   example: "CLP"
                 order:
+                  pattern: " maximum 80 characters"
                   description: E-commerce order
                   type: string
                   example: "98745"
                 amount:
+                  pattern: " maximum 14 digitis"
                   description: order amount
                   type: integer
                   example: 25000
@@ -1769,6 +1785,7 @@ paths:
               type: object
               properties:
                 transactions:
+                  pattern: " maximum 30 characters"
                   description: Arrangement containing the identifier of each of the transactions to be authorized for settlement.
                   type: array
                   example: ['trx3b4d77b43acd9a720','trx3b4d77b43acd9a385']
@@ -1857,14 +1874,17 @@ paths:
               type: object
               properties:
                 id:
+                  pattern: " maximum 40 characters"
                   description: Identifier of the transaction which you want to cancel.
                   type: string
                   example: "trxpr2a45s1dytg1"
                 amount:
+                  pattern: " maximum 14 digits"
                   description: Transaction amount.
                   type: int
                   example: 25000
                 subject:
+                  pattern: " maximum 200 characters"
                   description: description of the cancellation request.
                   type: string
                   example: "transaction annulment"
@@ -2076,43 +2096,53 @@ paths:
               type: object
               properties:
                 email:
+                  pattern: " maximum 50 characters"
                   description: Client email.
                   type: string
                   format: email
                   example: joedoe@gmail.com
                 name:
+                  pattern: " maximum 80 characters"
                   description: Client name
                   type: string
                   example: "Joe Doe"
                 rut:
+                  pattern: " 12 characters required"
                   description: Single Tax Registry of the client, the entry of this data with or without a hyphen will be allowed.
                   type: string
                   example: "11111111"
                 phone:
+                  pattern: " 20 characters required"
                   description: Client phone.
                   type: string
                   example: "923122312"
                 address:
+                  pattern: " maximum 200 characters"
                   description: Client address.
                   type: string
                   example: "Moneda 101"
                 country:
+                  pattern: " maximum 40 characters"
                   description: Client country.
                   type: string
                   example: "Chile"
                 region:
+                  pattern: " maximum 120 characters"
                   description: Client region.
                   type: string
                   example: "Metropolitana"
                 city:
+                  pattern: " maximum 40 characters"
                   description: Client city.
                   type: string
                   example: "Santiago"
                 postal_code:
+                  pattern: " maximum 10 characters"
                   description: Client Zip Code.
                   type: string
                   example: "850000"
                 additional_parameters:
+                  pattern: " maximum 4000 characters"
                   description: Client additional parameters
                   type: object
                   properties:
@@ -2209,29 +2239,35 @@ paths:
               type: object
               properties:
                 name:
+                  pattern: " maximum 200 characters"
                   description: Plan name.
                   type: string
                   example: Test plan
                 description:
+                  pattern: " maximum 1000 characters"
                   description: Plan description.
                   type: string
                   example: Test Plan
                 url_notify_suscription:
+                  pattern: " maximum 240 characters"
                   description: URL where the subscription status will be notified.
                   type: string
                   example: "https://youwebsite.com/urlnotifysuscription"
                   format: url
                 url_notify_payment:
+                  pattern: " maximum 240 characters"
                   description: URL where the payment status will be notified.
                   type: string
                   example: "https://youwebsite.com/urlnotifypayment"
                   format: url
                 url_success_payment:
+                  pattern: " maximum 240 characters"
                   description: URL where the user will be redirected if the payment is successful.
                   type: string
                   example: "https://youwebsite.com/urlsuccesspayment"
                   format: url
                 url_failed_payment:
+                  pattern: " maximum 240 characters"
                   description: URL where the user will be redirected if the payment is unsuccessful.
                   type: string
                   example: "https://youwebsite.com/urlfailedpayment"
@@ -2320,10 +2356,12 @@ paths:
               type: object
               properties:
                 plan:
+                  pattern: " maximum 70 characters"
                   description: Plan id.
                   type: string
                   example: pl9697fb170834ad42dd00
                 client:
+                  pattern: " maximum 20 characters"
                   description: Client id.
                   type: string
                   example: cl9b1e1dd988694f30fa30
@@ -2418,22 +2456,27 @@ paths:
               type: object
               properties:
                 suscription:
+                  pattern: " maximum 60 characters"
                   description: Unique subscription identifier for payku.
                   type: string
                   example: sucaab7865dceaff49d8b3
                 amount:
+                  pattern: " maximum 14 digits"
                   description: Amount.
                   type: string
                   example: "10000"
                 order:
+                  pattern: " maximum 40 characters"
                   description: Order.
                   type: string
                   example: "001"
                 description:
+                  pattern: " maximum 1000 characters"
                   description: Description.
                   type: string
                   example: Description
                 card:
+                  pattern: " maximum 28 characters"
                   description: With the identifier you can indicate which of the active cards will be charged (OPTIONAL).
                   type: string
                   example: "surea041d8a4413949425fec"
@@ -2518,6 +2561,7 @@ paths:
                 type: object
                 properties:
                   suscription:
+                    pattern: " maximum 60 characters"
                     description: ID of the associated card.
                     type: string
                     example: surec804a8ed60c0a8cb8839
@@ -2638,28 +2682,28 @@ paths:
               type: object
               properties:
                 email:
-                  pattern: "  maximum 50 characters"
+                  pattern: " maximum 50 characters"
                   description: Client email.
                   type: string
                   format: email
                   example: joedoe@gmail.com
                 name:
-                  pattern: "  maximum 80 characters"
+                  pattern: " maximum 80 characters"
                   description: Client name
                   type: string
                   example: "Joe Doe"
                 rut:
-                  pattern: "  12 characters required"
+                  pattern: " 12 characters required"
                   description: Single Tax Registry of the client, the entry of this data with or without a hyphen will be allowed.
                   type: string
                   example: "11111111"
                 phone:
-                  pattern: "  20 characters required"
+                  pattern: " 20 characters required"
                   description: Client phone.
                   type: string
                   example: "923122312"
                 address:
-                  pattern: "  maximum 200 characters"
+                  pattern: " maximum 200 characters"
                   description: Client address.
                   type: string
                   example: "Moneda 101"
@@ -2684,7 +2728,7 @@ paths:
                   type: string
                   example: "850000"
                 additional_parameters:
-                  pattern: "  maximum 4000 characters"
+                  pattern: " maximum 4000 characters"
                   description: Client additional parameters
                   type: object
                   properties:
@@ -2715,6 +2759,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -2783,6 +2828,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -2889,39 +2935,48 @@ paths:
               type: object
               properties:
                 email:
+                  pattern: " maximum 50 characters"
                   description: Client email.
                   type: string
                   format: email
                   example: joedoe@gmail.com
                 name:
+                  pattern: " maximum 80 characters"
                   description: Client name
                   type: string
                   example: "Joe Doe Doe"
                 phone:
+                  pattern: " maximum 20 characters"
                   description: Client phone.
                   type: string
                   example: "923122312"
                 address:
+                  pattern: " maximum 200 characters"
                   description: Client address.
                   type: string
                   example: "Moneda 121"
                 country:
+                  pattern: " maximum 40 characters"
                   description: Client country.
                   type: string
                   example: "Chile"
                 region:
+                  pattern: " maximum 120 characters"
                   description: Client region.
                   type: string
                   example: "Metropolitana"
                 city:
+                  pattern: " maximum 40 characters"
                   description: Client city.
                   type: string
                   example: "Santiago"
                 postal_code:
+                  pattern: " maximum 10 characters"
                   description: Client Zip Code.
                   type: string
                   example: "750000"
                 additional_parameters:
+                  pattern: " maximum 4000 characters"
                   description: Client additional parameters
                   type: object
                   properties:
@@ -2947,6 +3002,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -3145,10 +3201,12 @@ paths:
               type: object
               properties:
                 plan:
+                  pattern: " maximum 70 characters"
                   description: Plan id.
                   type: string
                   example: pl9697fb170834ad42dd00
                 client:
+                  pattern: " maximum 20 characters"
                   description: Client id.
                   type: string
                   example: cl9b1e1dd988694f30fa30
@@ -3158,12 +3216,14 @@ paths:
               oneOf:
                 - properties:
                     amount:
+                      pattern: " maximum 14 digits"
                       description: This field will only be used in the case of variable amount subscription plans, it is important to note that the currency to be used in this type of plan is CLP.
                       type: string
                   required:
                     - amount
                 - properties:
                     coupon:
+                      pattern: " maximum 50 characters"
                       type: string
                       description: Coupon code
                   required:
@@ -3326,18 +3386,22 @@ paths:
               type: object
               properties:
                 suscription:
+                  pattern: " maximum 60 characters"
                   description: Unique subscription identifier for payku.
                   type: string
                   example: sucaab7865dceaff49d8b3
                 amount:
+                  pattern: " maximum 14 digits"
                   description: Amount.
                   type: string
                   example: "10000"
                 order:
+                  pattern: " maximum 40 characters"
                   description: Order.
                   type: string
                   example: "001"
                 description:
+                  pattern: " maximum 1000 characters"
                   description: Description.
                   type: string
                   example: DescripciÃ³n
@@ -3358,6 +3422,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -3425,6 +3490,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -3564,6 +3630,7 @@ paths:
               type: object
               properties:
                 suscription:
+                  pattern: " maximum 60 characters"
                   description: Subscription ID.
                   type: string
                   example: sucaab7865dceaff49d8b3
@@ -3648,6 +3715,7 @@ paths:
                 type: object
                 properties:
                   suscription:
+                    pattern: " maximum 60 characters"
                     description: ID of the associated card.
                     type: string
                     example: surec804a8ed60c0a8cb8839
@@ -3668,6 +3736,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -3927,33 +3996,33 @@ paths:
               type: object
               properties:
                 email:
-                  pattern: "  maximum 100 characters"
+                  pattern: " maximum 100 characters"
                   description: Client email.
                   type: string
                   format: email
                   example: joedoe@gmail.com
                 order:
-                  pattern: "  maximum 40 characters"
+                  pattern: " maximum 40 characters"
                   description: Trade order.
                   type: string
                   example: "98745"
                 subject:
-                  pattern: "  maximum 2000 characters"
+                  pattern: " maximum 2000 characters"
                   description: Description of the order.
                   type: string
                   example: test subject
                 amount:
-                  pattern: "  maximum 14 digits"
+                  pattern: " maximum 14 digits"
                   description: Order amount.
                   type: integer
                   example: 25000
                 currency:
-                  pattern: "  maximum 6 characters"
+                  pattern: " maximum 6 characters"
                   description: Currency.
                   type: string
                   example: "CLP"
                 payment:
-                  pattern: "  maximum 2 characters"
+                  pattern: " maximum 2 characters"
                   description: |
                     Identifier of the payment method. If the identifier is sent, the payer will be redirected directly to the indicated means of payment.
                     - 1 Webpay
@@ -3991,13 +4060,13 @@ paths:
                   type: string
                   example: "2022-10-19 13:05:10"
                 urlreturn:
-                  pattern: "  maximum 200 characters"
+                  pattern: " maximum 200 characters"
                   description: return url of the merchant where payku will redirect the payer after 3 seconds of obtaining the result of the transaction.
                   type: string
                   format: url
                   example: https://youwebsite.com/urlreturn?orderClient=123
                 urlnotify:
-                  pattern: "  maximum 600 characters"
+                  pattern: " maximum 600 characters"
                   description: |
                     Callback url of the business where payku will notify the payment.
                     - Note: After the client completes the payment process at their bank, payku will automatically respond to the endpoint entered in urlnotify the result of the banking operation.
@@ -4023,7 +4092,7 @@ paths:
                   format: url
                   example: https://youwebsite.com/urlnotify?orderClient=123
                 additional_parameters:
-                  pattern: "  maximum 4000 characters"
+                  pattern: " maximum 4000 characters"
                   description: |
                     Additional client parameters (Optional).
                   type: object
@@ -4133,6 +4202,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 30 characters"
       responses:
         "200":
           content:
@@ -4325,10 +4395,12 @@ paths:
               type: object
               properties:
                 event:
+                  pattern: " maximum 40 characters"
                   description: Event id.
                   type: string
                   example: "98374"
                 name:
+                  pattern: " maximum 400 characters"
                   description: Event name.
                   type: string
                   example: "Event"
@@ -4345,16 +4417,19 @@ paths:
                   type: datetime
                   example: "2020-12-20"
                 url_event:
+                  pattern: " maximum 240 characters"
                   description: url where the event is published.
                   type: string
                   format: url
                   example: https://example.cl/event1
                 url_logo:
+                  pattern: " maximum 240 characters"
                   description: url of the logo that identifies the event.
                   type: string
                   format: url
                   example: https://example.cl/logo_event1.png
                 service_sale:
+                  pattern: " maximum 7 characters"
                   description: Amount of the sales service, belongs to the amount that the owner of the account will receive per transaction.
                   type: integer
                   example: 10
@@ -4366,10 +4441,12 @@ paths:
                     description: Collection object for a collection batch.
                     properties:
                       email:
+                        pattern: " maximum 50 characters"
                         type: string
                         description: Beneficiary email.
                         example: "afiliate1@domain.com"
                       percent:
+                        pattern: " maximum 6 characters"
                         type: number
                         description: Percentage which corresponds to the beneficiary.
                         example: "100"
@@ -4394,6 +4471,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 40 characters"
       responses:
         "200":
           content:
@@ -4545,27 +4623,33 @@ paths:
               type: object
               properties:
                 email:
+                  pattern: " maximum 50 characters"
                   description: Client email.
                   type: string
                   format: email
                   example: joedoe@gmail.com
                 name:
+                  pattern: " maximum 150 characters"
                   description: Client name
                   type: string
                   example: "Joe Doe"
                 phone:
+                  pattern: " maximum 12 characters"
                   description: Client phone.
                   type: string
                   example: "923122312"
                 bank:
+                  pattern: " maximum 58 characters"
                   type: object
                   properties:
                     sbif:
+                      pattern: " maximum 5 characters"
                       description: |
                         Bank code to which the bank account belongs.
                       type: string
                       example: "0001"
                     type:
+                      pattern: " maximum 1 character"
                       description: |
                         Account type.
                         - 1 Checking account
@@ -4574,10 +4658,12 @@ paths:
                       type: string
                       example: "1"
                     num:
+                      pattern: " maximum 40 characters"
                       description: Client's account number.
                       type: string
                       example: "12312313121"
                     rut:
+                      pattern: " 12 characters required"
                       description: Single Tax Registry.
                       type: string
                       example: "111111111"
@@ -4606,6 +4692,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -4671,6 +4758,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -4764,23 +4852,28 @@ paths:
               type: object
               properties:
                 name:
+                  pattern: " maximum 50 characters"
                   description: Client name
                   type: string
                   example: "Joe Doe Doe"
                 phone:
+                  pattern: " maximum 50 characters"
                   description: Client phone
                   type: string
                   example: "923122312"
                 bank:
+                  pattern: " maximum 58 characters"
                   description: Client bank details
                   type: object
                   properties:
                     sbif:
+                      pattern: " maximum 5 characters"
                       description: |
                           Code of the bank to which the bank account belongs.
                       type: string
                       example: "0001"
                     type:
+                      pattern: " maximum 1 character"
                       description:  |
                           Account type.
                           - 1 Checking account
@@ -4789,10 +4882,12 @@ paths:
                       type: int
                       example: 3
                     num:
+                      pattern: " maximum 40 characters"
                       description: Client's account number.
                       type: string
                       example: "9999999"
                     rut:
+                      pattern: " 12 characters required"
                       description: Single Tax Registry.
                       type: string
                       example: "111111111"
@@ -4810,6 +4905,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -4948,14 +5044,17 @@ paths:
               type: object
               properties:
                 name:
+                  pattern: " maximum 80 characters"
                   description: Membership name.
                   type: string
                   example: name
                 percentage:
+                  pattern: " maximum 2 characters"
                   description: Percentage corresponding to the payku user.
                   type: string
                   example: "20"
                 affiliation:
+                  pattern: " maximum 25 characters"
                   type: array
                   description: Array containing customers, each customer is an array containing a customer identifier created by payku and the percentage that it will get.
                   example:
@@ -4979,6 +5078,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -5044,6 +5144,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 20 characters"
       responses:
         "200":
           content:
@@ -5193,23 +5294,28 @@ paths:
               type: object
               properties:
                 email:
+                  pattern: " maximum 50 characters"
                   description: Client email.
                   type: string
                   format: email
                   example: joedoe@gmail.com
                 order:
+                  pattern: " maximum 40 characters"
                   description: Trade order.
                   type: string
                   example: "98745"
                 subject:
+                  pattern: " maximum 2000 characters"
                   description: Description of the order.
                   type: string
                   example: test subject
                 amount:
+                  pattern: " maximum 14 digits"
                   description: Order amount.
                   type: integer
                   example: 25000
                 payment:
+                  pattern: " maximum 2 characters"
                   description: |
                     Identifier of the payment method. If the identifier is sent, the payer will be redirected directly to the indicated means of payment.
                     - 1 Webpay
@@ -5225,16 +5331,19 @@ paths:
                   type: integer
                   example: 1
                 urlreturn:
+                  pattern: " maximum 200 characters"
                   description: return url of the trade where payku will redirect the payer.
                   type: string
                   format: url
                   example: https://youwebsite.com/urlreturn?orderClient=123
                 urlnotify:
+                  pattern: " maximum 600 characters"
                   description: Callback url of the business where payku will notify the payment.
                   type: string
                   format: url
                   example: https://youwebsite.com/urlnotify?orderClient=123
                 marketplace:
+                  pattern: " maximum 70 characters"
                   description: Mandatory attribute to make transactions to Marketplace affiliation, this consists of the token of the marketplace affiliation to which you want to carry out the transaction.
                   type: string
                   example: c1c879f4862d393ea6b326a313022dd98f0baa2869d3e9095c124199c9941030
@@ -5347,11 +5456,13 @@ paths:
               type: object
               properties:
                 email:
+                  pattern: " maximum 50 characters"
                   description: Customer email.
                   type: string
                   format: email
                   example: joedoe@gmail.com
                 payment:
+                  pattern: " maximum 2 characters"
                   description: |
                     Identifier of the payment method. If the identifier is sent, the payer will be redirected directly to the indicated means of payment.
                     - 1 Webpay
@@ -5367,6 +5478,7 @@ paths:
                   type: integer
                   example: 1
                 merchant:
+                  pattern: " maximum 200 characters"
                   type: array of arrays
                   description: Array containing the clients, each client is an array containing its public token or marketplace affiliation id, transaction value, description, id of the specific event which if not owned must pass null and individual order number.
                   example:
@@ -5384,15 +5496,18 @@ paths:
                         null,
                         "4547"]
                 order:
+                  pattern: " maximum 40 characters"
                   description: Trade order, this must be unique.
                   type: integer
                   example: 123
                 urlreturn:
+                  pattern: " maximum 200 characters"
                   description: return url of the trade where payku will redirect the payer.
                   type: string
                   format: url
                   example: https://youwebsite.cl/urlreturn
                 urlnotify:
+                  pattern: " maximum 600 characters"
                   description: callback url of the business where payku will notify the payment.
                   type: string
                   format: url
@@ -5418,6 +5533,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: " maximum 30 characters"
       responses:
         '200':
           content:
