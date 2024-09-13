@@ -4025,6 +4025,7 @@ paths:
                   pattern: " maximum 2 characters"
                   description: |
                     Identifier of the payment method. If the identifier is sent, the payer will be redirected directly to the indicated means of payment.
+                    - 99 All
                     - 1 Webpay
                     - 3 Multicaja Efectivo
                     - 4 Multicaja Transferencia
@@ -4036,7 +4037,9 @@ paths:
                     - 15 ServiFacil
                     - 17 Vepuy (moneda VES)
                     - 19 Fintoc
-                    - 99 All
+                    - 100 Webpay plus (1 a 3 quotas)
+                    - 101 Webpay plus (4 a 6 quotas)
+                    - 102 Webpay plus (7 a 12 quotas)
                   type: integer
                   example: 1
                 expired:
